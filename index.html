@@ -23,7 +23,18 @@
     </style>
 </head>
 <body>
-    <iframe src="https://player.vimeo.com/video/1056164717?autoplay=1&loop=1&muted=0&playsinline=1" 
+    <iframe id="vimeoPlayer"
+            src="https://player.vimeo.com/video/1056164717?autoplay=1&loop=1&muted=1&playsinline=1" 
             allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+    <script>
+        window.onload = function () {
+            var iframe = document.getElementById('vimeoPlayer');
+            var player = new URL(iframe.src);
+            player.searchParams.set("autoplay", "1");
+            player.searchParams.set("muted", "0"); // Try forcing sound
+            iframe.src = player.toString();
+        };
+    </script>
 </body>
 </html>
